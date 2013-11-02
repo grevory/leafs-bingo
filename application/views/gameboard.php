@@ -10,7 +10,7 @@
 
 <div class="container">
 <header>
-  Leafs Bingo
+  <h1>Leafs Bingo</h1>
 </header>
   <div class="grid">
     <div class="table">

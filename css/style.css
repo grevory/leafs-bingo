@@ -1,8 +1,9 @@
 html,body {
   display: block;
   height: 100%;
-  width: 100%;  
+  width: 100%;
   margin: 0;
+  font-family: sans-serif;
 }
 
 div { 
@@ -11,16 +12,16 @@ div {
 
 .container {
   background-color: #ccc;
-  display:table;
+  display: table;
   height: 100%;
   width: 100%;
-  padding-top: 36px;
+  padding-top: 44px;
   position: relative;
 }
 
 header {
-  background-color: #ccc;
-  height: 36px;
+  background-color: #003875;
+  height: 44px;
   position: absolute;
   top: 0;
   left: 0;
@@ -28,9 +29,15 @@ header {
   width: 100%;
 }
 
+  h1 {
+    color: #fff;
+    font-size: 24px;
+    margin: 6px 20px;
+  }
+
 .grid {
   background-color: #ccc;
-  display: table-cell;
+  height: 100%;
 }
 
 .table {
@@ -52,10 +59,12 @@ header {
   background-color: #fff;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .sidebar {
   background-color: #fefefe;
-  width: 10%;
+  width: 24%;
   display: table-cell;
 }

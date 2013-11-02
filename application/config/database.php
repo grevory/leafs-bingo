@@ -52,7 +52,7 @@ $db['default']['hostname'] = '';
 $db['default']['username'] = '';
 $db['default']['password'] = '';
 $db['default']['database'] = '';
-$db['default']['dbdriver'] = '';
+$db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -64,7 +64,7 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-require('database.sensitive.php')
+include('database.sensitive.php');
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
