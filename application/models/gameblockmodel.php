@@ -46,7 +46,7 @@ class GameBlockModel extends CI_Model {
         }
     }
 
-    function get_all($get_as_object=false)
+    function get_all()
     {
         if (!$this->game_id)
         {
@@ -55,14 +55,18 @@ class GameBlockModel extends CI_Model {
 
         $this->db->where('game_id', $this->game_id);
         $this->db->limit(25);
+        $this->db->join('suggestions', 'suggestions.id = blocks.suggestion_id and suggestions.active = 1');
 
         $query = $this->db->get('blocks');
 
-        if ($get_as_object)
+        $organized_blocks = array();
+
+        foreach ($query->result_array() as $block)
         {
-            return $query->result();
+            $organized_blocks[$block['row']][] = $block;
         }
-        return $query->result_array();
+
+        return $organized_blocks;
     }
 
     function save()

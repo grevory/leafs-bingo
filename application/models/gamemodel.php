@@ -19,10 +19,29 @@ class GameModel extends CI_Model {
     }
 
 
-    function get()
+    function get($id=null)
     {
-        $query = $this->db->get('games', 18);
-        return $query->result();
+        $this->db->select('*');
+        $this->db->select("DATE_FORMAT(start_time, '%a, %b %D') AS nice_start_date", false);
+        $this->db->select("DATE_FORMAT(start_time, '%W, %M %D') AS nicer_start_date", false);
+        $this->db->select("DATE_FORMAT(start_time, '%h:%i%p') AS nice_start_time", false);
+
+        if ($id)
+        {
+            $this->db->where("id", $id);
+            $query = $this->db->get('games');
+            if ($query->num_rows()>0) {
+                $results = $query->result_array();
+                return $results[0];
+            }
+            return null;
+        }
+
+        $this->db->where("start_time <=", date('Y-m-d 23:59:59'));
+        $this->db->order_by("start_time", "desc");
+        $query = $this->db->get('games', 12);
+
+        return $query->result_array();
     }
 
     
@@ -126,7 +145,7 @@ class GameModel extends CI_Model {
 
     function get_next()
     {
-        $this->db->where('start_time <', date('Y-m-d H:i:s'));
+        $this->db->where('start_time <', date('Y-m-d 23:59:59'));
         $query = $this->db->get('games');
 
         $next_game = null;

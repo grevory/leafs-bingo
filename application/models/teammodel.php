@@ -9,11 +9,6 @@ class TeamModel extends CI_Model
 			'name' => 'Ducks',
 			'logo' => 'http://cdn.nhle.com/nhl/images/logos/fullsvg/ducks_logo.png'
 		),
-		'Atlanta Thrashers' => array(
-			'city' => 'Atlanta',
-			'name' => 'Thrashers',
-			'logo' => 'http://cdn.nhle.com/nhl/images/logos/fullsvg/thrashers_logo.png'
-		),
 		'Boston Bruins' => array(
 			'city' => 'Boston',
 			'name' => 'Bruins',
@@ -153,6 +148,11 @@ class TeamModel extends CI_Model
 			'city' => 'Washington',
 			'name' => 'Capitals',
 			'logo' => 'http://cdn.nhle.com/nhl/images/logos/fullsvg/capitals_logo.png'
+		),
+		'Winnipeg Jets' => array(
+			'city' => 'Winnipeg',
+			'name' => 'Jets',
+			'logo' => 'http://cdn.nhle.com/nhl/images/logos/fullsvg/jets_logo.png'
 		)
 	);
 
@@ -164,6 +164,19 @@ class TeamModel extends CI_Model
 		}
 
 		return $this->teams;
+	}
+
+	function get_by_city($city)
+	{
+		foreach ($this->teams as $team)
+		{
+			if ($team['city']===$city)
+			{
+
+				return $team;
+			}
+		}
+		return null;
 	}
 
 }

@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "play";
 $route['404_override'] = '';
+$route['(:any)'] = "play/index/$1";
 
 
 /* End of file routes.php */
